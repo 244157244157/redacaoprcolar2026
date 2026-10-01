@@ -1,0 +1,19 @@
+(function() {
+const events = ['paste', 'copy', 'cut', 'contextmenu', 'selectstart', 'dragstart'];
+
+
+events.forEach(eventType => {
+    window.addEventListener(eventType, function(e) {
+        e.stopPropagation();
+    }, true);
+});
+
+
+document.querySelectorAll('*').forEach(element => {
+    events.forEach(eventType => {
+        element.removeAttribute(`on${eventType}`);
+    });
+});
+
+console.log("Restrições de colagem e seleção removidas com sucesso.");
+})();
